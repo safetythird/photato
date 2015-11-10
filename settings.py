@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'photato'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,11 +53,13 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'photato.urls'
 
+APPEND_SLASH = True
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': ['photato/templates'],
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -77,7 +80,7 @@ WSGI_APPLICATION = 'photato.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': '/sqlite/db.sqlite3',
     }
 }
 
@@ -99,4 +102,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = '/media/'
+MEDIA_URL = '/media/'
+
+# Flickr API settings
+
+# This is insecure, but okay for a toy app
+FLICKR_API_KEY = os.environ.get('FLICKR_API_KEY')
+FLICKR_API_SECRET = os.environ.get('FLICKR_API_SECRET')
+
+FLICKR_URL = 'https://api.flickr.com/services/rest/'
+FLICKR_SEARCH_METHOD = 'flickr.photos.search'
+FLICKR_SEARCH_FORMAT = 'json'
+FLICKR_EXTRA_KEYS = ','.join(['url_s', 'url_n', 'url_z', 'url_k'])

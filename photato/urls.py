@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth.views import login, logout
+
+from .views import search_page, save_photo, api_search
+
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', search_page),
+    url(r'^login/?$', login, {'template_name': 'login.html'}),
+    url(r'^logout/?$', logout, {'next_page': '/'}),
+    url(r'^api/search/?$', api_search),
+    url(r'^api/save/?$', save_photo),
+    url(r'^admin/?$', include(admin.site.urls)),
 ]

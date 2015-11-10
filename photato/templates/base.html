@@ -1,0 +1,28 @@
+<head>
+  <title>photato</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://css-spinners.com/css/spinner/spinner.css" type="text/css">
+</head>
+<body>
+  <nav id="navbar" class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">photato</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        {% if username %}
+        <p class="navbar-text navbar-right">You are <strong>{{ username }}</strong>. <a href="/logout">Logout</a></span>
+        {% else %}
+        <p class="navbar-text navbar-right"><a href="/login">Login</a></span>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  <div id="content" class="container text-center">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <script id="user-data" data-username="{{ username }}"></script>
+  {% block script %}
+  {% endblock %}
+</body>

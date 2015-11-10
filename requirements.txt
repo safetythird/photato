@@ -1,1 +1,4 @@
 Django
+requests
+ipython
+pillow

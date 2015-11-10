@@ -1,0 +1,33 @@
+rules:
+  indent:
+    - 2
+    - 2
+  quotes:
+    - 2
+    - single
+  linebreak-style:
+    - 2
+    - unix
+  semi:
+    - 2
+    - never
+  space-before-function-paren:
+    - 1
+    - always
+  space-before-blocks:
+    - 1
+    - always
+  space-infix-ops:
+    - 1
+  no-console:
+    - 0
+env:
+  es6: true
+  node: true
+  browser: true
+extends: 'eslint:recommended'
+ecmaFeatures:
+  jsx: true
+  experimentalObjectRestSpread: true
+plugins:
+  - react

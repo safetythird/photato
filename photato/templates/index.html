@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid text-center">
+  <div id="search" ></div>
+  <div id="search-results"></div>
+</div>
+{% endblock %}
+{% block script %}
+<script src="{% static 'js/bundle.js' %}"></script>
+{% endblock %}

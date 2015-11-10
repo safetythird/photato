@@ -1,0 +1,11 @@
+<h2>Search Flickr</h2>
+<form id="search-form" class="form-inline">
+    <input type="text" id="search-query" class="form-control">
+    <input type="submit" class="btn btn-primary">
+</form>
+<div class="lead"><span ><% print(query && "Showing results for ") %></span><span class="text-info"><%= query %></span></div>
+<% if (loading) { %>
+<div class="spinner-loader">
+  Loading…
+</div>
+<% } %>

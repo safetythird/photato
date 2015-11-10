@@ -1,0 +1,7 @@
+<form method="post" action="{% url 'signup' %}">
+{% csrf_token %}
+<input type="text" value="username">{{ form.username }}
+<input type="password" value="password">{{ form.password }}</input>
+<input type="submit" value="signup" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
