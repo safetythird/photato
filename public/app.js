@@ -51,7 +51,7 @@ let SearchResult = Backbone.Model.extend({
     // Just post the raw search result to the server, and it will handle the rest
     $.ajax(SAVEURL, {data: this.toJSON(), method: 'POST'}).done((rsp) => {
       console.log(rsp)
-      this.saved = true
+      this.set({saved: true})
       callback && callback(null, rsp)
     }).error((error) => {
       callback && callback(error)
