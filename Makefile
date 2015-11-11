@@ -9,7 +9,7 @@ build:
 
 .PHONY: run
 run:
-	docker run --rm -it -v $(PWD):/app -v /sqlite:/sqlite -p 80:8000 --env FLICKR_API_KEY --env FLICKR_API_SECRET --name $(CONTAINERNAME) $(IMGTAG)
+	docker run --rm -it -v $(PWD):/app -v /var/photato/sqlite:/sqlite -v /var/photato/media:/media -p 80:8000 --env FLICKR_API_KEY --env FLICKR_API_SECRET --name $(CONTAINERNAME) $(IMGTAG)
 
 .PHONY: lint
 lint:

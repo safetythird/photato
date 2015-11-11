@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'photato.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/sqlite/db.sqlite3',
+        'NAME': '/sqlite/db.sqlite3'
     }
 }
 
@@ -107,7 +107,7 @@ STATICFILES_DIRS = (
 )
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/media/'
+MEDIA_ROOT = '/media'
 MEDIA_URL = '/media/'
 
 # Flickr API settings

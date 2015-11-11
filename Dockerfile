@@ -6,9 +6,6 @@ RUN apt-get install -y nodejs
 ENV PATH $PATH:/nodejs/bin
 RUN npm install -g browserify watchify stringify eslint eslint-plugin-react
 
-# DB volume
-VOLUME /sqlite
-
 # Install Python dependencies
 WORKDIR /app
 ADD requirements.txt /app/
