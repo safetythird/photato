@@ -3,11 +3,17 @@ from django.contrib.auth.models import User
 
 
 class Photo(m.Model):
+    '''
+    Represents a single photo in any number of sizes.
+    '''
     id = m.CharField(max_length=32, primary_key=True)
     user = m.ForeignKey(User)
 
 
 class PhotoSize(m.Model):
+    '''
+    Stores a path to the image file along with its Flickr-defined suffix.
+    '''
     SIZE_SUFFIXES = [
         ('s', 'Small square'),
         ('q', 'Large square'),

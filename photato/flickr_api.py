@@ -16,7 +16,7 @@ img_size = namedtuple('img_size', ['url', 'height', 'width'])
 SIZES = {s[0]: img_size('url_' + s[0], 'height_' + s[0], 'width_' + s[0]) for s in PhotoSize.SIZE_SUFFIXES}
 
 
-def get_photo_data(url):
+def get_photo_file(url):
     try:
         r = urllib.urlretrieve(url)
         f = File(open(r[0]))
@@ -27,11 +27,15 @@ def get_photo_data(url):
 
 
 def download_photo(user, result):
+    '''
+    Download all available sizes of a photo based on the URLs provided in the
+    search result dict.
+    '''
     p = Photo(id=result['id'], user=user)
     p.save()
     for suffix, size in SIZES.items():
         if all(k in result for k in size):
-            image = get_photo_data(result[size.url])
+            image = get_photo_file(result[size.url])
             if image:
                 PhotoSize(
                     photo=p,
@@ -41,6 +45,9 @@ def download_photo(user, result):
 
 
 def run_search(query, page):
+    '''
+    Run a search through the Flickr API.
+    '''
     params = {
         'method': settings.FLICKR_SEARCH_METHOD,
         'format': settings.FLICKR_SEARCH_FORMAT,
